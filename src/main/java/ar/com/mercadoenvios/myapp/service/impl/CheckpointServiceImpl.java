@@ -22,13 +22,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class CheckpointServiceImpl implements CheckpointService {
-    @Autowired
     private final Logger log = LoggerFactory.getLogger(CheckpointServiceImpl.class);
 
-    @Autowired
     private final CheckpointRepository checkpointRepository;
 
-    @Autowired
     private final CheckpointMapper checkpointMapper;
 
     public CheckpointServiceImpl(CheckpointRepository checkpointRepository, CheckpointMapper checkpointMapper) {
