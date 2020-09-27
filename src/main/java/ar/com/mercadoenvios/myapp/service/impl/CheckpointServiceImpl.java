@@ -3,9 +3,11 @@ package ar.com.mercadoenvios.myapp.service.impl;
 import ar.com.mercadoenvios.myapp.domain.Checkpoint;
 import ar.com.mercadoenvios.myapp.repository.CheckpointRepository;
 import ar.com.mercadoenvios.myapp.service.CheckpointService;
+import ar.com.mercadoenvios.myapp.service.ShipmentService;
 import ar.com.mercadoenvios.myapp.service.dto.CheckpointDTO;
 import ar.com.mercadoenvios.myapp.service.mapper.CheckpointMapper;
 import ar.com.mercadoenvios.myapp.web.rest.errors.BadRequestAlertException;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +29,9 @@ public class CheckpointServiceImpl implements CheckpointService {
     private final CheckpointRepository checkpointRepository;
 
     private final CheckpointMapper checkpointMapper;
+
+    @Autowired
+    private ShipmentService shipmentService;
 
     public CheckpointServiceImpl(CheckpointRepository checkpointRepository, CheckpointMapper checkpointMapper) {
         this.checkpointRepository = checkpointRepository;
@@ -69,5 +74,32 @@ public class CheckpointServiceImpl implements CheckpointService {
     public void delete(Long id) {
         log.debug("Request to delete Checkpoint : {}", id);
         checkpointRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<CheckpointDTO> findByShipmentId(Long id) {
+        log.debug("Request to get Checkpoints by ShipmentId : {}", id);
+        validShipmentId(id);
+        List<Checkpoint> checkpoints = checkpointRepository.findByShipmentId(id);
+        checkpoints = orderCheckpoints(checkpoints);
+        return checkpoints.stream().map(checkpointMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    private void validShipmentId(Long id) {
+        if (!shipmentService.findOne(id).isPresent()) throw new BadRequestAlertException(
+            "Shipment not exist",
+            "shipment",
+            "shipmentNotExist"
+        );
+    }
+
+    private List<Checkpoint> orderCheckpoints(List<Checkpoint> checkpoints) {
+        checkpoints =
+            checkpoints
+                .stream()
+                .sorted(Comparator.comparingInt(checkpoint -> checkpoint.getStatus().ordinal()))
+                .collect(Collectors.toList());
+        return checkpoints;
     }
 }

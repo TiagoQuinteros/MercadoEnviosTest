@@ -117,4 +117,15 @@ public class CheckpointResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
     }
+
+    /**
+     * {@code GET  /checkpoints/byshipment} : get the checkpoints of one specific shipmentId.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of checkpoints in body.
+     */
+    @GetMapping("/checkpoints/byshipment")
+    public List<CheckpointDTO> getCheckpointsByShipmentId(@RequestParam Long id) {
+        log.debug("REST request to get Checkpoint : {}", id);
+        return checkpointService.findByShipmentId(id);
+    }
 }
