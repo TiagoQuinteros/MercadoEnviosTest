@@ -1,21 +1,20 @@
 package ar.com.mercadoenvios.myapp.web.rest;
 
 import ar.com.mercadoenvios.myapp.service.CheckpointService;
-import ar.com.mercadoenvios.myapp.web.rest.errors.BadRequestAlertException;
 import ar.com.mercadoenvios.myapp.service.dto.CheckpointDTO;
-
+import ar.com.mercadoenvios.myapp.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
+import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * REST controller for managing {@link ar.com.mercadoenvios.myapp.domain.Checkpoint}.
@@ -23,7 +22,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class CheckpointResource {
-
     private final Logger log = LoggerFactory.getLogger(CheckpointResource.class);
 
     private static final String ENTITY_NAME = "checkpoint";
@@ -45,13 +43,15 @@ public class CheckpointResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/checkpoints")
-    public ResponseEntity<CheckpointDTO> createCheckpoint(@RequestBody CheckpointDTO checkpointDTO) throws URISyntaxException {
+    public ResponseEntity<CheckpointDTO> createCheckpoint(@Valid @RequestBody CheckpointDTO checkpointDTO)
+        throws URISyntaxException, BadRequestAlertException {
         log.debug("REST request to save Checkpoint : {}", checkpointDTO);
         if (checkpointDTO.getId() != null) {
             throw new BadRequestAlertException("A new checkpoint cannot already have an ID", ENTITY_NAME, "idexists");
         }
         CheckpointDTO result = checkpointService.save(checkpointDTO);
-        return ResponseEntity.created(new URI("/api/checkpoints/" + result.getId()))
+        return ResponseEntity
+            .created(new URI("/api/checkpoints/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
@@ -72,7 +72,8 @@ public class CheckpointResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         CheckpointDTO result = checkpointService.save(checkpointDTO);
-        return ResponseEntity.ok()
+        return ResponseEntity
+            .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, checkpointDTO.getId().toString()))
             .body(result);
     }
@@ -111,6 +112,9 @@ public class CheckpointResource {
     public ResponseEntity<Void> deleteCheckpoint(@PathVariable Long id) {
         log.debug("REST request to delete Checkpoint : {}", id);
         checkpointService.delete(id);
-        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+        return ResponseEntity
+            .noContent()
+            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
+            .build();
     }
 }
