@@ -1,0 +1,11 @@
+export const enum Status {
+  HANDLING = 'HANDLING',
+
+  READY_TO_SHIP = 'READY_TO_SHIP',
+
+  SHIPPED = 'SHIPPED',
+
+  DELIVERED = 'DELIVERED',
+
+  NOT_DELIVERED = 'NOT_DELIVERED',
+}

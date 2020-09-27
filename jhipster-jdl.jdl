@@ -1,0 +1,31 @@
+
+entity Shipment {
+	id Long
+}
+
+entity Checkpoint {
+	status Status
+    subStatus SubStatus
+}
+
+enum Status {
+    HANDLING, READY_TO_SHIP, SHIPPED, DELIVERED, NOT_DELIVERED
+}
+
+enum SubStatus{
+MANUFACTURING, READY_TO_PRINT, PRINTED, SOON_DELIVER, WAITING_FOR_WITHDRAWAL, LOST, STOLEN
+
+}
+
+relationship OneToMany {
+	  Shipment{checkpoint} to Checkpoint{shipment}
+}
+
+//Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

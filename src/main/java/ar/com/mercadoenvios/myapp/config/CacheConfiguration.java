@@ -47,6 +47,9 @@ public class CacheConfiguration {
             createCache(cm, ar.com.mercadoenvios.myapp.domain.User.class.getName());
             createCache(cm, ar.com.mercadoenvios.myapp.domain.Authority.class.getName());
             createCache(cm, ar.com.mercadoenvios.myapp.domain.User.class.getName() + ".authorities");
+            createCache(cm, ar.com.mercadoenvios.myapp.domain.Shipment.class.getName());
+            createCache(cm, ar.com.mercadoenvios.myapp.domain.Shipment.class.getName() + ".checkpoints");
+            createCache(cm, ar.com.mercadoenvios.myapp.domain.Checkpoint.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

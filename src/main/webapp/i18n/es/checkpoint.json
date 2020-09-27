@@ -1,0 +1,24 @@
+{
+  "mercadoEnviosTestApp": {
+    "checkpoint": {
+      "home": {
+        "title": "Checkpoints",
+        "createLabel": "Crear nuevo Checkpoint",
+        "createOrEditLabel": "Crear o editar Checkpoint",
+        "notFound": "Ningún Checkpoints encontrado"
+      },
+      "created": "Un nuevo Checkpoint ha sido creado con el identificador {{ param }}",
+      "updated": "Un Checkpoint ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Checkpoint ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Checkpoint {{ id }}?"
+      },
+      "detail": {
+        "title": "Checkpoint"
+      },
+      "status": "Status",
+      "subStatus": "Sub Status",
+      "shipment": "Shipment"
+    }
+  }
+}

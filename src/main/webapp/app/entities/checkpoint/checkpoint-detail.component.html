@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="checkpoint">
+            <h2><span jhiTranslate="mercadoEnviosTestApp.checkpoint.detail.title">Checkpoint</span> {{ checkpoint.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mercadoEnviosTestApp.checkpoint.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mercadoEnviosTestApp.Status.' + checkpoint.status }}">{{ checkpoint.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="mercadoEnviosTestApp.checkpoint.subStatus">Sub Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mercadoEnviosTestApp.SubStatus.' + checkpoint.subStatus }}">{{ checkpoint.subStatus }}</span>
+                </dd>
+                <dt><span jhiTranslate="mercadoEnviosTestApp.checkpoint.shipment">Shipment</span></dt>
+                <dd>
+                    <div *ngIf="checkpoint.shipmentId">
+                        <a [routerLink]="['/shipment', checkpoint.shipmentId, 'view']">{{ checkpoint.shipmentId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/checkpoint', checkpoint.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

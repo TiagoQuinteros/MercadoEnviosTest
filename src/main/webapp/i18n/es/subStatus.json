@@ -1,0 +1,14 @@
+{
+  "mercadoEnviosTestApp": {
+    "SubStatus": {
+      "null": "",
+      "MANUFACTURING": "MANUFACTURING",
+      "READY_TO_PRINT": "READY_TO_PRINT",
+      "PRINTED": "PRINTED",
+      "SOON_DELIVER": "SOON_DELIVER",
+      "WAITING_FOR_WITHDRAWAL": "WAITING_FOR_WITHDRAWAL",
+      "LOST": "LOST",
+      "STOLEN": "STOLEN"
+    }
+  }
+}

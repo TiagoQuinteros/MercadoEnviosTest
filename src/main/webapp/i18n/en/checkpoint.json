@@ -1,0 +1,24 @@
+{
+  "mercadoEnviosTestApp": {
+    "checkpoint": {
+      "home": {
+        "title": "Checkpoints",
+        "createLabel": "Create a new Checkpoint",
+        "createOrEditLabel": "Create or edit a Checkpoint",
+        "notFound": "No Checkpoints found"
+      },
+      "created": "A new Checkpoint is created with identifier {{ param }}",
+      "updated": "A Checkpoint is updated with identifier {{ param }}",
+      "deleted": "A Checkpoint is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Checkpoint {{ id }}?"
+      },
+      "detail": {
+        "title": "Checkpoint"
+      },
+      "status": "Status",
+      "subStatus": "Sub Status",
+      "shipment": "Shipment"
+    }
+  }
+}

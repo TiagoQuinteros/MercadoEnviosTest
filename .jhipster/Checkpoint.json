@@ -1,0 +1,35 @@
+{
+  "name": "Checkpoint",
+  "fields": [
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "HANDLING,READY_TO_SHIP,SHIPPED,DELIVERED,NOT_DELIVERED"
+    },
+    {
+      "fieldName": "subStatus",
+      "fieldType": "SubStatus",
+      "fieldValues": "MANUFACTURING,READY_TO_PRINT,PRINTED,SOON_DELIVER,WAITING_FOR_WITHDRAWAL,LOST,STOLEN"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "shipment",
+      "otherEntityRelationshipName": "checkpoint",
+      "relationshipName": "shipment",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200927154003",
+  "entityTableName": "checkpoint",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

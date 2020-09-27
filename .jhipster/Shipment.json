@@ -1,0 +1,23 @@
+{
+  "name": "Shipment",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "checkpoint",
+      "otherEntityRelationshipName": "shipment",
+      "relationshipName": "checkpoint"
+    }
+  ],
+  "changelogDate": "20200927153903",
+  "entityTableName": "shipment",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
