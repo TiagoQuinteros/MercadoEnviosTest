@@ -1,6 +1,6 @@
 {
   "home": {
-    "title": "¡Bienvenidoa mi examen de MercadoEnvios!",
+    "title": "¡Bienvenido a mi examen de MercadoEnvios!",
     "subtitle": "app Administracion de Checkpoints",
     "logged": {
       "message": "Está conectado como \"{{username}}\"."
