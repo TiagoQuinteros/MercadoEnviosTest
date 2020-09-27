@@ -1,7 +1,6 @@
 package ar.com.mercadoenvios.myapp.service;
 
 import ar.com.mercadoenvios.myapp.service.dto.CheckpointDTO;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +8,6 @@ import java.util.Optional;
  * Service Interface for managing {@link ar.com.mercadoenvios.myapp.domain.Checkpoint}.
  */
 public interface CheckpointService {
-
     /**
      * Save a checkpoint.
      *
@@ -25,7 +23,6 @@ public interface CheckpointService {
      */
     List<CheckpointDTO> findAll();
 
-
     /**
      * Get the "id" checkpoint.
      *
@@ -40,4 +37,6 @@ public interface CheckpointService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    List<CheckpointDTO> findByShipmentId(Long id);
 }

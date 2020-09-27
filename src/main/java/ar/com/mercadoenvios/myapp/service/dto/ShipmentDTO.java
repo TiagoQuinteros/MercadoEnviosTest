@@ -1,15 +1,26 @@
 package ar.com.mercadoenvios.myapp.service.dto;
 
+import ar.com.mercadoenvios.myapp.domain.Checkpoint;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A DTO for the {@link ar.com.mercadoenvios.myapp.domain.Shipment} entity.
  */
 public class ShipmentDTO implements Serializable {
-    
     private Long id;
 
-    
+    private Set<Checkpoint> checkpoints = new HashSet<>();
+
+    public Set<Checkpoint> getCheckpoints() {
+        return checkpoints;
+    }
+
+    public void setCheckpoints(Set<Checkpoint> checkpoints) {
+        this.checkpoints = checkpoints;
+    }
+
     public Long getId() {
         return id;
     }
