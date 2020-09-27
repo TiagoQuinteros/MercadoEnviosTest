@@ -1,23 +1,35 @@
 package ar.com.mercadoenvios.myapp.service.dto;
 
-import java.io.Serializable;
 import ar.com.mercadoenvios.myapp.domain.enumeration.Status;
 import ar.com.mercadoenvios.myapp.domain.enumeration.SubStatus;
+import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 
 /**
  * A DTO for the {@link ar.com.mercadoenvios.myapp.domain.Checkpoint} entity.
  */
 public class CheckpointDTO implements Serializable {
-    
     private Long id;
 
     private Status status;
 
     private SubStatus subStatus;
 
-
+    @NotNull
     private Long shipmentId;
-    
+
+    public CheckpointDTO(Long id, Status status, SubStatus subStatus, @NotNull Long shipmentId) {
+        super();
+        this.id = id;
+        this.status = status;
+        this.subStatus = subStatus;
+        this.shipmentId = shipmentId;
+    }
+
+    public CheckpointDTO() {
+        super();
+    }
+
     public Long getId() {
         return id;
     }
