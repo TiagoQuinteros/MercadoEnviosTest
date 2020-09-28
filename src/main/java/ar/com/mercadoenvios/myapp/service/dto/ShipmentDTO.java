@@ -13,6 +13,15 @@ public class ShipmentDTO implements Serializable {
 
     private Set<Checkpoint> checkpoints = new HashSet<>();
 
+    public ShipmentDTO() {
+        super();
+    }
+
+    public ShipmentDTO(Long id) {
+        super();
+        this.id = id;
+    }
+
     public Set<Checkpoint> getCheckpoints() {
         return checkpoints;
     }
